@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-Friends
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/friends_style.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <h2 id="friends-header">Friends</h2>
+{% endblock %}
+

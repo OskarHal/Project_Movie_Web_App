@@ -13,6 +13,6 @@ def get_movie_by_title(input_title):
     print(result)
 
 
-get_movie_by_title("Interstellar")
+#get_movie_by_title("Interstellar")
 
 # http://www.omdbapi.com/?i=tt3896198&apikey=6f91aff9

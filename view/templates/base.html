@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>MovieBuff</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+    {% block link %}
+    {% endblock %}
 </head>
 <body>
 <header id="head_test" >
@@ -19,7 +21,7 @@
 
 
                 <li class="menu-button">
-                    <a href="">
+                    <a href="{{ url_for('friends') }}" class="menu-item">
                         Friends
                     </a>
                 </li>
