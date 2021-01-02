@@ -1,12 +1,3 @@
-import json
-
-from flask import request
-from view import app
-import requests
-
-from view.api_settings import API_KEY
-
-
 # def get_movie_by_title(input_title):
 #     parameters = {'t': input_title, 'r': 'json', 'plot': 'full', 'Page': 2}
 #     data_url = 'http://www.omdbapi.com/?apikey=' + API_KEY
