@@ -35,3 +35,5 @@ def friends():
 @app.errorhandler(404)
 def handler404(_):
     return render_template('404.html')
+
+
