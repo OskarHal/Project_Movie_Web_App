@@ -1,11 +1,26 @@
 {% extends "base.html" %}
 
 {% block link %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/friends_style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/friends_style.css') }}"/>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 {% endblock %}
 
+<body>
+        <div class="col-sm-3 col-sm-offset-4 frame">
+            <ul></ul>
+            <div>
+                <div class="msj-rta macro" style="margin:auto">
+                    <div class="text text-r" style="background:whitesmoke !important">
+                        <input class="mytext" placeholder="Type a message"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 
 {% block content %}
-    <h2 id="friends-header">Friends</h2>
+
 {% endblock %}
 
