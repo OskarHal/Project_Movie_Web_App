@@ -1,22 +1,22 @@
-<<<<<<< HEAD
+{% extends 'base.html' %}
 
-=======
-<!DOCTYPE html>
-<head>
+{% block link %}
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/friends_style.css') }}"/>
+{% endblock %}
 
-</head>
-<html>
+{% block content %}
     <body>
         <div class="col-sm-3 col-sm-offset-4 frame">
             <ul></ul>
             <div>
                 <div class="msj-rta macro">
                     <div class="text text-r" style="background:whitesmoke !important">
-                        <input class="mytext" placeholder="Type a message"/>
+                        <label>
+                            <input class="mytext" placeholder="Type a message"/>
+                        </label>
                     </div>
 
                 </div>
@@ -26,5 +26,4 @@
             </div>
         </div>
     </body>
-</html>
->>>>>>> d21c692843381402d1745c4b3fe8fbc0ff7cdc93
+{% endblock %}
