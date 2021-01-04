@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_style.css') }}"/>
 </head>
 <body>
-Login
+<div class="login_box">
+    <form class="login_form">
+        <p>Username/Email</p>
+            <input type="text" name="">
+        <p>Password</p>
+            <input type="password" name="">
+        <input type="button" value="Login" id="login">
+        <a href="" id="forgot_password">Forgot password?</a>
+    </form>
+    <div class="sign_up">
+        <a>Dont have an account?</a>
+        <a href="" id="sign_up_link"> Sign up here.</a>
+    </div>
+
+</div>
 </body>
 </html>

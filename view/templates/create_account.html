@@ -3,8 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/create_acc_style.css') }}"/>
 </head>
 <body>
-Create account
+<div class="sign_up_box">
+    <form class="sign_up_form">
+        <p>Username</p>
+            <input type="text" name="">
+        <p>Email</p>
+            <input type="email" name="">
+        <p>Password</p>
+            <input type="password" name="">
+        <p>Confirm Password</p>
+            <input type="password" name="">
+    </form>
+    <div class="checkboxes">
+        <input type="checkbox" id="aggree">
+            <label for="aggree">I agree to the MovieBuff Terms of service and Privacy policy.</label><br>
+        <input type="checkbox" id="subscribe">
+            <label for="subscribe">I wish to subscribe to MovieBuff newsletter.</label>
+    </div>
+    <div class="create_account">
+        <input type="button" value="Create Account" id="create_account">
+    </div>
+    <div class="login">
+        <a>Already have an account?</a>
+        <a href="" id="login_link"> Login here.</a>
+    </div>
+</div>
 </body>
 </html>

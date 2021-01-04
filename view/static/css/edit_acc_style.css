@@ -1,0 +1,28 @@
+.edit_acc_box{
+    width: 400px;
+    height: 550px;
+    background: #000;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.save_btn {
+    margin-right: 20px;
+    margin-left: auto;
+    border: solid 1px white;
+    width: 80px;
+    height: 40px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-position: center;
+    background-color: pink;
+}
