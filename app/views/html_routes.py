@@ -1,7 +1,7 @@
 import json
 
 from flask_login import login_required, login_manager, current_user
-from flask_security.utils import hash_password, login_user, logout_user
+from flask_security.utils import hash_password, login_user, logout_user, verify_password
 
 from flask import render_template, session, request, redirect, url_for
 
@@ -9,7 +9,9 @@ from controllers.user_controller import get_user_by_email, create_user
 from views.api_routes import get_movie_by_title_first
 from views.utils.flask_wtf_classes import RegisterForm, LoginForm
 from views import app
+
 import json
+from data.MongoDB_MongoEngine.db.db_user_role_security import user_datastore
 
 
 @app.route('/', methods=['GET'])
@@ -39,6 +41,7 @@ def signup():
     return render_template('signup.html', form=form)
 
 
+  
 @app.route('/search', methods=['POST'])
 def search():
     global movie_information
@@ -58,7 +61,6 @@ def search():
 
     return response
 
-
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
     form = LoginForm()
@@ -75,17 +77,29 @@ def signin():
     return render_template('signin.html', form=form)
 
 
+
 @app.route("/signout")
 def signout():
     logout_user()
     print("Signing out")
     return render_template('index.html')
 
-
 @app.route('/profile')
 @login_required
 def profile():
     return render_template('profile.html', first_name=current_user.first_name)
+
+
+@app.route('/signin', methods=['GET', 'POST'])
+def signin():
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = user_datastore.find_user(email=form.email.data)
+        if user:
+            if verify_password(form.password.data, user.password):
+                login_user(user, remember=form.remember.data)
+                return redirect(url_for('profile'))
+    return render_template('signin.html', form=form)
 
 
 @app.route('/edit_account')
@@ -106,16 +120,6 @@ def movie(title):
 def watchlist():
     return render_template('watchlist.html')
 
-
-# @app.route("/logout")
-# def logout():
-#     session.clear()
-#     return None
-#     return render_template('index.html')
-# username = session['username']
-# if username is None:
-#     return render_template('index.html')
-# return render_template('profile.html', username=username)
 
 @app.route('/friends')
 def friends():

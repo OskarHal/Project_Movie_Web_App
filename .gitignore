@@ -4,4 +4,4 @@ __pycache__/
 app/views/api_settings/
 app/data/MongoDB/db/db_settings/
 docker-compose.yml
-app/data/MongoDB_MongoEngine/db/db_settings/config.py
+app/data/MongoDB_MongoEngine/db/db_settings

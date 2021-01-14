@@ -1,0 +1,9 @@
+.matching-movies {
+    display: flex;
+    flex-direction: row;
+}
+
+.movie {
+    background-color: lightgray;
+    margin: 10px;
+}
