@@ -42,13 +42,7 @@
 
             <div class="column" id="row1-col2">
                 <h1 id ="name-h">{{current_user.username}}</h1>
-                <a href="" id="delete_user" onclick="function confirm_delete() {
-                    if (confirm('want do delete?')) {
-                        document.getElementById('delete_user').href='{{ url_for('remove_user', username=current_user.username)}}';
-                    }
-                }
-                confirm_delete()">Remove account</a>
-                <h3>{{current_user.roles[0] if current_user.roles| length > 0}}</h3><br>
+                <h3>{{current_user.roles[0] if current_user.roles| length > 0}}</h3>
 
                 <div id="user-info">
                     <h2 style="display: inline">First name</h2><p style="display: inline">{{current_user.first_name}}</p><br>
@@ -56,6 +50,12 @@
                     <h2 style="display: inline">Username</h2><p style="display: inline">{{current_user.username}}</p><br>
                     <h2 style="display: inline">Email</h2><p style="display: inline">{{current_user.email}}</p><br>
                 </div>
+                <a id="delete_user" onclick="function confirm_delete() {
+                    if (confirm('want do delete?')) {
+                        document.getElementById('delete_user').href='{{ url_for('remove_user', username=current_user.username)}}';
+                    }
+                }
+                confirm_delete()">(Remove account)</a>
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@ from flask_security import roles_required
 from flask_security.utils import login_user, logout_user, verify_password
 
 from controllers.chat_controller import remove_user_chats
+from controllers.role_controller import add_admin_role_to_user, create_role
 from controllers.user_controller import create_user, get_all_users, get_user_by_username, get_user_by_email, \
     add_profile_picture_to_user, delete_profile_picture_if_exists, remove_user as ru
 
@@ -16,7 +17,6 @@ index = Blueprint('index', __name__, url_prefix='/')
 @index.route("/", methods = ['GET'])
 def _index():
     login_form = LoginForm()
-    #clean_database()
     return render_template("index.html", login_form=login_form)
 
 
