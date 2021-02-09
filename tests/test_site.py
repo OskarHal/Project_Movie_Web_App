@@ -101,6 +101,18 @@ class MovieBuffTests(unittest.TestCase):
         alert = WebDriverWait(self.driver, 10).until(expected_conditions.alert_is_present())
         alert.accept()
 
+    def test_add_to_watchlist(self):
+        self.test_login()
+        self.test_search()
+
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_all_elements_located((By.NAME, 'movie-box')))[0].click()
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, 'add'))).click()
+
+        self.driver.get('http://127.0.0.1:5000/watchlist')
+
+        movie_title = self.driver.find_element_by_id('main-container').text
+        self.assertEqual(movie_title, "Inception")
+
     def tearDown(self):
         pass
 
