@@ -75,7 +75,6 @@ def get_watchlist(username):
 @login_required
 def delete_from_watchlist(username):
     movie = json.loads(request.values['movie'])
-    resp = ""
     delete_movie_from_users_watchlist(current_user, movie)
 
     if movie not in current_user.watchlist:

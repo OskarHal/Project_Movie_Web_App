@@ -91,12 +91,11 @@
                         .attr("type", "image")
                         .attr("src", "static/images/remove_btn.png")
 
-                      let back =  $("<input>")
-                          .attr("id", "back")
-                          .attr("onClick", "go_back(this)")
-                          .attr("class", "btn btn-secondary")
-                          .attr('value', 'Back');
-
+                      let back = $("<input>")
+                        .attr("id", "back")
+                        .attr("onClick", "go_back(this)")
+                        .attr("class", "btn btn-secondary")
+                        .attr('value', 'Back')
 
                       let title = $("<h1>")
                         .text(response["Title"]);

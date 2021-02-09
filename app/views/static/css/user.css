@@ -17,3 +17,13 @@ p {
     font-size: 30px;
     color: gray;
 }
+
+#make_admin {
+    display: inline;
+    margin-right: 10px;
+}
+
+#remove_admin {
+    display: inline;
+    margin-right: 10px;
+}

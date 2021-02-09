@@ -19,3 +19,7 @@ def get_chat_between_users(user, friend):
 
 def add_message_to_chat(chat, message):
     cr.add_message_to_chat(chat, message)
+
+
+def remove_user_chats(user):
+    cr.remove_user_chats(user)

@@ -61,7 +61,6 @@ def delete_movie_from_users_watchlist(user, movie):
     user.save()
 
 
-
 def delete_profile_picture_if_exists(user):
     if user.profile_picture:
         user.profile_picture.delete()

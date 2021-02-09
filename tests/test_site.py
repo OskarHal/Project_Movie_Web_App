@@ -4,14 +4,14 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as EC, expected_conditions
 import selenium
 
 
 class MovieBuffTests(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome('chromedriver.exe')
+        self.driver = webdriver.Chrome('./chromedriver')
 
     def test_search(self):
         self.driver.get('http://127.0.0.1:5000')
@@ -22,7 +22,7 @@ class MovieBuffTests(unittest.TestCase):
         search_field.send_keys(Keys.RETURN)
         search_results = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, 'result')))
         results = search_results.find_elements_by_name("movie-box")
-
+        print()
         for result in results:
             self.assertIn('Inception', result.text)
         self.assertEqual(len(results), 10)
@@ -73,7 +73,7 @@ class MovieBuffTests(unittest.TestCase):
         submit = self.driver.find_element_by_id('add-submit')
 
         num_friends_before = len(self.driver.find_elements_by_class_name('friend-link'))
-        username_field.send_keys('hanna')
+        username_field.send_keys('marcus')
         submit.send_keys(Keys.RETURN)
         num_friends_after = len(self.driver.find_elements_by_class_name('friend-link'))
         print(num_friends_before)
@@ -88,19 +88,18 @@ class MovieBuffTests(unittest.TestCase):
         friend_link = friends[0]
         friend_link.click()
 
-        # text_input = self.driver.find_element_by_id('send')
         text_input = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, 'send')))
         submit = self.driver.find_element_by_id('send_submit')
-
-        # Funkar ej
-
-        text_input.click()
-        # time.sleep(1)
         text_input.send_keys('hur är läget?!')
         submit.send_keys(Keys.RETURN)
-        print(text_input.get_attribute('value').encode('utf-8'))
-        print(self.driver.page_source)
-        time.sleep(5)
+
+    def test_remove_user(self):
+        self.test_login()
+        self.driver.get('http://127.0.0.1:5000/profile')
+        remove_button = self.driver.find_element_by_id('delete_user')
+        remove_button.click()
+        alert = WebDriverWait(self.driver, 10).until(expected_conditions.alert_is_present())
+        alert.accept()
 
     def test_add_to_watchlist(self):
         self.test_login()
@@ -113,13 +112,6 @@ class MovieBuffTests(unittest.TestCase):
 
         movie_title = self.driver.find_element_by_id('main-container').text
         self.assertEqual(movie_title, "Inception")
-
-    def test_add_profile_picture(self):
-        self.test_login()
-        self.driver.get('http://127.0.0.1:5000/profile')
-        submit_button = self.driver.find_element_by_id('file')
-
-        self.driver.close()
 
     def tearDown(self):
         pass

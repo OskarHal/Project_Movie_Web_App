@@ -54,3 +54,14 @@ h1,h2,h3 {
     font-style: italic;
     opacity: 0.8;
 }
+
+#delete_user {
+    margin-top: 20px;
+    color: gray;
+    font-size: 20px;
+}
+
+#delete_user:hover {
+    cursor: pointer;
+    color: white;
+}

@@ -27,3 +27,10 @@ def get_chat_between_users(user, friend):
 def add_message_to_chat(chat, message):
     chat.messages.append(message)
     chat.save()
+
+
+def remove_user_chats(user):
+    for chat in Chat.objects:
+        if user in chat.members:
+            chat.delete()
+        chat.save()
