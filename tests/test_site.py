@@ -6,10 +6,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import selenium
+
+
 class MovieBuffTests(unittest.TestCase):
 
     def setUp(self):
-
         self.driver = webdriver.Chrome('chromedriver.exe')
 
     def test_search(self):
@@ -21,7 +22,7 @@ class MovieBuffTests(unittest.TestCase):
         search_field.send_keys(Keys.RETURN)
         search_results = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, 'result')))
         results = search_results.find_elements_by_name("movie-box")
-        print()
+
         for result in results:
             self.assertIn('Inception', result.text)
         self.assertEqual(len(results), 10)
@@ -91,7 +92,7 @@ class MovieBuffTests(unittest.TestCase):
         text_input = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, 'send')))
         submit = self.driver.find_element_by_id('send_submit')
 
-        #Funkar ej
+        # Funkar ej
 
         text_input.click()
         # time.sleep(1)
@@ -101,6 +102,17 @@ class MovieBuffTests(unittest.TestCase):
         print(self.driver.page_source)
         time.sleep(5)
 
+    def test_add_to_watchlist(self):
+        self.test_login()
+        self.test_search()
+
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_all_elements_located((By.NAME, 'movie-box')))[0].click()
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, 'add'))).click()
+
+        self.driver.get('http://127.0.0.1:5000/watchlist')
+
+        movie_title = self.driver.find_element_by_id('main-container').text
+        self.assertEqual(movie_title, "Inception")
 
     def test_add_profile_picture(self):
         self.test_login()
@@ -111,7 +123,6 @@ class MovieBuffTests(unittest.TestCase):
 
     def tearDown(self):
         pass
-
 
 
 if __name__ == '__main__':

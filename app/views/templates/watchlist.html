@@ -92,10 +92,11 @@
                         .attr("src", "static/images/remove_btn.png")
 
                       let back =  $("<input>")
-                        .attr("id", "back")
-                        .attr("onClick", "go_back(this)")
-                        .attr("type", "image")
-                        .attr("src", "static/images/back_btn.png")
+                          .attr("id", "back")
+                          .attr("onClick", "go_back(this)")
+                          .attr("class", "btn btn-secondary")
+                          .attr('value', 'Back');
+
 
                       let title = $("<h1>")
                         .text(response["Title"]);
@@ -118,7 +119,7 @@
                       let plot = $("<p>")
                         .text(response["Plot"]);
 
-                      $("#movie-content").append(title, runtime, year, genre, director, actor, plot, back, remove);
+                      $("#movie-content").append(title, runtime, year, genre, director, actor, plot, remove, back);
                   },
                   datatype: 'json'
               });

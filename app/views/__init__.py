@@ -7,10 +7,10 @@ app = Flask(__name__)
 CORS(app)
 app.config.from_object(config)
 
-import views.html_routes
-import views.api_routes
+import views.routes.html_routes
+import views.routes.api_routes
 
-from views.html_routes import index
+from views.routes.html_routes import index
 
 app.register_blueprint(index)
 
