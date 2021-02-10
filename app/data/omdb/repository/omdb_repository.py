@@ -5,7 +5,6 @@ from data.omdb.api_settings import API_KEY
 
 def get_movies_by_title(input_title):
     parameters = {'s': {input_title}, 'r': 'json', 'plot': 'short', 'page': 1, 'apikey': API_KEY}
-
     return [movie for movie in requests.get(f'http://www.omdbapi.com/', params=parameters).json()['Search']]
 
 
